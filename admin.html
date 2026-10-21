@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Liga Garra de Águia Pirituba — Gestão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-home" viewBox="0 0 24 24">
+          <path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+        </symbol>
+        <symbol id="i-users" viewBox="0 0 24 24">
+          <circle cx="9" cy="8" r="3.5" />
+          <path
+            d="M2 20c0-4 3-6 7-6s7 2 7 6M17 5a3.5 3.5 0 0 1 0 6.5M22 20c0-3-1.5-5-4-5.7"
+          />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="M4 12l5 5L20 6" />
+        </symbol>
+        <symbol id="i-cal" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="17" rx="2" />
+          <path d="M3 9h18M8 2v4M16 2v4" />
+        </symbol>
+        <symbol id="i-award" viewBox="0 0 24 24">
+          <circle cx="12" cy="9" r="6" />
+          <path d="M8.5 14L7 22l5-3 5 3-1.5-8" />
+        </symbol>
+        <symbol id="i-wallet" viewBox="0 0 24 24">
+          <rect x="2" y="6" width="20" height="14" rx="2" />
+          <path d="M2 10h20M16 15h2" />
+        </symbol>
+        <symbol id="i-file" viewBox="0 0 24 24">
+          <path d="M6 2h9l5 5v15H6zM14 2v6h6M9 13h7M9 17h7" />
+        </symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24">
+          <path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4" />
+        </symbol>
+        <symbol id="i-cog" viewBox="0 0 24 24">
+          <path d="M4 6h10M19 6h1M4 12h4M13 12h7M4 18h11M20 18h0" />
+          <circle cx="16.5" cy="6" r="2" />
+          <circle cx="10.5" cy="12" r="2" />
+          <circle cx="17.5" cy="18" r="2" />
+        </symbol>
+        <symbol id="i-out" viewBox="0 0 24 24">
+          <path
+            d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M20 12H9"
+          />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14" />
+        </symbol>
+        <symbol id="i-search" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-4-4" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="loginScreen" class="login-screen">
+      <form class="login-card" id="loginForm">
+        <img src="logo.png" alt="Liga Garra de Águia Kung-Fu" />
+        <h1>Liga Garra de Águia</h1>
+        <h2>Pirituba</h2>
+        <p>Acesso do professor</p>
+        <input
+          id="loginUser"
+          aria-label="Usuário"
+          required
+          placeholder="Usuário"
+          autocomplete="username"
+        />
+        <input
+          id="loginPass"
+          aria-label="Senha"
+          required
+          type="password"
+          placeholder="Senha"
+          autocomplete="current-password"
+        />
+        <button class="primary full" id="loginBtn" type="submit">Entrar</button>
+        <a href="index.html" style="color: var(--gold)">← Voltar ao site</a>
+      </form>
+    </div>
+
+    <div id="app" class="app hidden">
+      <aside class="sidebar">
+        <div class="brand">
+          <img src="logo.png" alt="" />
+          <div><strong>Liga Garra de Águia</strong><small>Pirituba</small></div>
+        </div>
+        <nav>
+          <button class="nav active" data-page="dashboard">
+            <svg class="i"><use href="#i-home" /></svg><span>Dashboard</span>
+          </button>
+          <button class="nav" data-page="alunos">
+            <svg class="i"><use href="#i-users" /></svg><span>Alunos</span>
+          </button>
+          <button class="nav" data-page="frequencia">
+            <svg class="i"><use href="#i-check" /></svg><span>Frequência</span>
+          </button>
+          <button class="nav" data-page="turmas">
+            <svg class="i"><use href="#i-cal" /></svg
+            ><span>Turmas e aulas</span>
+          </button>
+          <button class="nav" data-page="graduacoes">
+            <svg class="i"><use href="#i-award" /></svg><span>Graduações</span>
+          </button>
+          <button class="nav" data-page="financeiro">
+            <svg class="i"><use href="#i-wallet" /></svg><span>Financeiro</span>
+          </button>
+          <button class="nav" data-page="relatorios">
+            <svg class="i"><use href="#i-file" /></svg><span>Relatórios</span>
+          </button>
+          <button class="nav" data-page="avisos">
+            <svg class="i"><use href="#i-bell" /></svg><span>Avisos</span>
+          </button>
+          <button class="nav" data-page="config">
+            <svg class="i"><use href="#i-cog" /></svg><span>Configurações</span>
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <span>Professor</span>
+          <button id="logout" title="Sair">
+            <svg class="i"><use href="#i-out" /></svg><span>Sair</span>
+          </button>
+        </div>
+      </aside>
+
+      <main>
+        <div class="wrap">
+          <header>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="header-actions">
+              <button class="iconbtn" id="notifyBtn" title="Avisos">
+                <svg class="i"><use href="#i-bell" /></svg
+                ><i id="notifyDot"></i>
+              </button>
+              <div class="user">
+                <b id="gymName">Professor</b><small>Administrador</small>
+              </div>
+            </div>
+          </header>
+
+          <section id="dashboard" class="page active">
+            <div class="welcome">
+              <h2>Olá, Professor</h2>
+              <p>Acompanhe a academia em poucos cliques.</p>
+              <button class="primary" data-go="frequencia">
+                <svg class="i"><use href="#i-check" /></svg>Registrar frequência
+              </button>
+            </div>
+            <div class="stats">
+              <div class="card stat">
+                <b id="statStudents">0</b><small>Alunos ativos</small>
+              </div>
+              <div class="card stat">
+                <b id="statClasses">0</b><small>Turmas</small>
+              </div>
+              <div class="card stat">
+                <b id="statAttendance">0%</b><small>Frequência média</small>
+              </div>
+              <div class="card stat">
+                <b id="statPending">R$ 0</b
+                ><small>Mensalidades pendentes</small>
+              </div>
+            </div>
+            <div class="grid2">
+              <div class="card">
+                <div class="card-head">
+                  <h3>Próximas aulas</h3>
+                  <button class="link" data-go="turmas">Ver agenda</button>
+                </div>
+                <div id="nextLessons"></div>
+              </div>
+              <div class="card">
+                <div class="card-head"><h3>Ações rápidas</h3></div>
+                <button class="quick" id="qStudent">
+                  <svg class="i"><use href="#i-plus" /></svg>Cadastrar novo
+                  aluno
+                </button>
+                <button class="quick" data-go="frequencia">
+                  <svg class="i"><use href="#i-check" /></svg>Fazer chamada
+                </button>
+                <button class="quick" id="qPay">
+                  <svg class="i"><use href="#i-wallet" /></svg>Registrar
+                  pagamento
+                </button>
+                <button class="quick" data-go="avisos">
+                  <svg class="i"><use href="#i-bell" /></svg>Criar aviso
+                </button>
+              </div>
+            </div>
+            <div class="grid2">
+              <div class="card">
+                <div class="card-head"><h3>Alunos recentes</h3></div>
+                <div id="recentStudents"></div>
+              </div>
+              <div class="card">
+                <div class="card-head"><h3>Resumo financeiro</h3></div>
+                <div id="financeSummary"></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="alunos" class="page">
+            <div class="toolbar">
+              <div class="search">
+                <svg class="i"><use href="#i-search" /></svg
+                ><input
+                  id="studentSearch"
+                  placeholder="Buscar por nome, telefone ou e-mail"
+                />
+              </div>
+              <select id="studentFilter">
+                <option value="all">Todos</option>
+                <option value="active">Ativos</option>
+                <option value="inactive">Inativos</option>
+              </select>
+              <button class="primary" id="addStudent">
+                <svg class="i"><use href="#i-plus" /></svg>Novo aluno
+              </button>
+            </div>
+            <div class="card table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Aluno</th>
+                    <th>Contato</th>
+                    <th>Turma</th>
+                    <th>Faixa</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="studentTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="frequencia" class="page">
+            <div class="toolbar">
+              <select id="attClass"></select>
+              <input type="date" id="attDate" />
+              <button class="secondary" id="loadHistory">Histórico</button>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <div>
+                  <h3>Chamada da aula</h3>
+                  <span id="attInfo">Marque os alunos presentes</span>
+                </div>
+                <div class="att-tools">
+                  <button class="secondary" id="markAll">Marcar todos</button
+                  ><strong id="attCounter">0/0</strong>
+                </div>
+              </div>
+              <div id="attendanceList"></div>
+              <button class="primary save" id="saveAttendance">
+                Salvar frequência
+              </button>
+            </div>
+            <div class="card hidden" id="attendanceHistory">
+              <div class="card-head">
+                <h3>Últimas chamadas</h3>
+                <button class="link" id="closeHistory">Fechar</button>
+              </div>
+              <div id="historyList"></div>
+            </div>
+          </section>
+
+          <section id="turmas" class="page">
+            <div class="toolbar">
+              <button class="primary" id="addClass">
+                <svg class="i"><use href="#i-plus" /></svg>Nova turma
+              </button>
+            </div>
+            <div class="class-grid" id="classGrid"></div>
+            <div class="card">
+              <div class="card-head">
+                <h3>Agenda semanal</h3>
+                <span id="monthLabel"></span>
+              </div>
+              <div class="week" id="week"></div>
+            </div>
+          </section>
+
+          <section id="graduacoes" class="page">
+            <div class="toolbar">
+              <select id="beltFilter">
+                <option value="all">Todas as graduações</option>
+                <option>Branca</option>
+                <option>Amarela</option>
+                <option>Laranja</option>
+                <option>Verde</option>
+                <option>Azul</option>
+                <option>Marrom</option>
+                <option>Preta</option>
+                <option value="pending">Próximos para graduação</option>
+              </select>
+              <button class="primary" id="promote">
+                <svg class="i"><use href="#i-plus" /></svg>Registrar graduação
+              </button>
+            </div>
+            <div class="card table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Aluno</th>
+                    <th>Faixa atual</th>
+                    <th>Última graduação</th>
+                    <th>Frequência</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="beltTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="financeiro" class="page">
+            <div class="stats three">
+              <div class="card stat">
+                <b id="paidTotal">R$ 0</b><small>Recebido</small>
+              </div>
+              <div class="card stat">
+                <b id="pendingTotal">R$ 0</b><small>Em aberto</small>
+              </div>
+              <div class="card stat">
+                <b id="payRate">0%</b><small>Taxa de pagamento</small>
+              </div>
+            </div>
+            <div class="toolbar">
+              <div class="search">
+                <svg class="i"><use href="#i-search" /></svg
+                ><input id="financeSearch" placeholder="Buscar aluno" />
+              </div>
+              <select id="financeFilter">
+                <option value="all">Todos</option>
+                <option value="paid">Pagos</option>
+                <option value="pending">Pendentes</option>
+              </select>
+              <button class="primary" id="newPayment">
+                <svg class="i"><use href="#i-plus" /></svg>Registrar pagamento
+              </button>
+            </div>
+            <div class="card table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Aluno</th>
+                    <th>Valor</th>
+                    <th>Vencimento</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="financeTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="relatorios" class="page">
+            <div class="report-grid">
+              <div class="card report">
+                <svg class="i big"><use href="#i-check" /></svg>
+                <h3>Frequência</h3>
+                <p>Presença por aluno e turma.</p>
+                <button class="secondary" data-report="Frequência">
+                  Gerar relatório
+                </button>
+              </div>
+              <div class="card report">
+                <svg class="i big"><use href="#i-wallet" /></svg>
+                <h3>Financeiro</h3>
+                <p>Pagamentos e pendências.</p>
+                <button class="secondary" data-report="Financeiro">
+                  Gerar relatório
+                </button>
+              </div>
+              <div class="card report">
+                <svg class="i big"><use href="#i-award" /></svg>
+                <h3>Graduações</h3>
+                <p>Faixas e aptidão para exame.</p>
+                <button class="secondary" data-report="Graduações">
+                  Gerar relatório
+                </button>
+              </div>
+              <div class="card report">
+                <svg class="i big"><use href="#i-users" /></svg>
+                <h3>Alunos</h3>
+                <p>Lista com dados cadastrais.</p>
+                <button class="secondary" data-report="Alunos">
+                  Gerar relatório
+                </button>
+              </div>
+            </div>
+            <div class="card report-output" id="reportOutput">
+              <h3>Relatório</h3>
+              <p class="muted">Escolha um tipo acima para gerar a prévia.</p>
+            </div>
+          </section>
+
+          <section id="avisos" class="page">
+            <div class="grid2">
+              <div class="card">
+                <div class="card-head"><h3>Novo aviso</h3></div>
+                <input id="noticeTitle" placeholder="Título do aviso" />
+                <textarea
+                  id="noticeText"
+                  placeholder="Mensagem para os alunos"
+                  rows="6"
+                ></textarea>
+                <select id="noticeTarget"></select>
+                <button class="primary full" id="sendNotice">
+                  Publicar aviso
+                </button>
+              </div>
+              <div class="card">
+                <div class="card-head"><h3>Avisos publicados</h3></div>
+                <div id="noticeList"></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="config" class="page">
+            <div class="card settings">
+              <h3>Configurações da academia</h3>
+              <label>Nome da academia<input id="cfgName" /></label>
+              <label>WhatsApp<input id="cfgPhone" /></label>
+              <label>Endereço<input id="cfgAddr" /></label>
+              <label
+                >Valor padrão da mensalidade (R$)<input
+                  id="cfgFee"
+                  type="number"
+                  min="0"
+              /></label>
+              <button class="primary" id="saveConfig">
+                Salvar configurações
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal hidden" id="modal">
+      <div class="modal-box">
+        <button class="close" id="closeModal" aria-label="Fechar">×</button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
